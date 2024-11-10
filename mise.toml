@@ -1,0 +1,30 @@
+[settings]
+experimental = true # Required to use lockfile.
+lockfile = true     # DO NOT FORGET TO `touch mise.lock`!
+
+[tools]
+neovim = 'latest'
+lua = 'prefix:5.1'
+# An opinionated Lua code formatter
+'ubi:JohnnyMorganz/stylua' = 'latest'
+# A blazing-fast modern Lua linter written in Rust
+'ubi:Kampfkarren/selene' = 'latest'
+
+[tasks.'deps/tests/restore']
+run = 'nvim -l tests/minit.lua --lazy-restore'
+
+[tasks.'deps/tests/update']
+run = 'nvim -l tests/minit.lua --lazy-update'
+
+[tasks.test]
+depends = ['lint']
+run = 'nvim -l tests/minit.lua --minitest'
+
+[tasks.lint]
+depends = ['lint/*']
+
+[tasks.'lint/stylua']
+run = 'stylua --check .'
+
+[tasks.'lint/selene']
+run = 'selene .'
