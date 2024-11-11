@@ -9,6 +9,8 @@ lua = 'prefix:5.1'
 'ubi:JohnnyMorganz/stylua' = 'latest'
 # A blazing-fast modern Lua linter written in Rust
 'ubi:Kampfkarren/selene' = 'latest'
+# Universal markup converter
+'ubi:jgm/pandoc' = 'latest'
 
 [tasks.'deps/tests/restore']
 run = 'nvim -l tests/minit.lua --lazy-restore'
@@ -28,3 +30,16 @@ run = 'stylua --check .'
 
 [tasks.'lint/selene']
 run = 'selene .'
+
+[tasks.'generate/panvimdoc']
+env.VERSION = 'v4.0.1'
+env.DIR = '.buildcache/panvimdoc'
+run = '''set -eo pipefail
+test -d $DIR || git clone https://github.com/kdheepak/panvimdoc $DIR
+git -C $DIR co $VERSION 2>/dev/null || (git -C $DIR fetch && git -C $DIR co $VERSION)
+$DIR/panvimdoc.sh \
+    --project-name ruscmd \
+    --input-file README.md \
+    --shift-heading-level-by -1 \
+    --vim-version Neovim
+'''
