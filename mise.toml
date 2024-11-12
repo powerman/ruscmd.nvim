@@ -3,7 +3,7 @@ experimental = true # Required to use lockfile.
 lockfile = true     # DO NOT FORGET TO `touch mise.lock`!
 
 [tools]
-neovim = 'latest'
+neovim = ['latest', '0.9']
 lua = 'prefix:5.1'
 # An opinionated Lua code formatter
 'ubi:JohnnyMorganz/stylua' = 'latest'
@@ -19,8 +19,18 @@ run = 'nvim -l tests/minit.lua --lazy-restore'
 run = 'nvim -l tests/minit.lua --lazy-update'
 
 [tasks.test]
-depends = ['lint']
+depends = ['lint', 'test/*']
 run = 'nvim -l tests/minit.lua --minitest'
+
+[tasks.'test/latest']
+run = 'nvim -l tests/minit.lua --minitest'
+
+[tasks.'test/0.9']
+run = '''
+eval "$(mise activate --shims)"
+eval "$(mise sh neovim@0.9)"
+nvim -u tests/shim-nvim-0.9.lua -l tests/minit.lua --minitest
+'''
 
 [tasks.lint]
 depends = ['lint/*']

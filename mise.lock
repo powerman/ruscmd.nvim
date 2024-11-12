@@ -1,6 +1,9 @@
 [tools]
 lua = "5.1.5"
-neovim = "0.10.2"
+neovim = [
+    "0.10.2",
+    "0.9.5",
+]
 "ubi:JohnnyMorganz/stylua" = "0.20.0"
 "ubi:Kampfkarren/selene" = "0.27.1"
 "ubi:jgm/pandoc" = "3.5"
