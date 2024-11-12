@@ -1,11 +1,14 @@
 globals:
-  jit.os:
-    type: string
-    property: read-only
-
   vim:
     any: true
 
+  # Exported by mini.test with option `emulate_busted = true`.
+  setup:
+    args:
+      - type: function
+  teardown:
+    args:
+      - type: function
   describe:
     args:
       - type: string
@@ -19,37 +22,4 @@ globals:
   it:
     args:
       - type: string
-      - type: function
-  assert.is_true:
-    args:
-      - type: any
-  assert.is_false:
-    args:
-      - type: any
-  assert.is_nil:
-    args:
-      - type: any
-  assert.is_not_nil:
-    args:
-      - type: any
-  assert.has_error:
-    args:
-      - type: function
-  assert.is_not.has_error:
-    args:
-      - type: function
-  assert.equals:
-    args:
-      - type: any
-      - type: any
-  assert.same:
-    args:
-      - type: any
-      - type: any
-  assert.spy:
-    any: true
-  assert.snapshot:
-    args: []
-  assert.wait_for:
-    args:
       - type: function
