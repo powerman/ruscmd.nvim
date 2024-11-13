@@ -20,7 +20,6 @@ run = 'nvim -l tests/minit.lua --lazy-update'
 
 [tasks.test]
 depends = ['lint', 'test/*']
-run = 'nvim -l tests/minit.lua --minitest'
 
 [tasks.'test/latest']
 run = 'nvim -l tests/minit.lua --minitest'
