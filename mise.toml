@@ -48,7 +48,7 @@ test -d $DIR || git clone https://github.com/kdheepak/panvimdoc $DIR
 git -C $DIR co $VERSION 2>/dev/null || (git -C $DIR fetch && git -C $DIR co $VERSION)
 $DIR/panvimdoc.sh \
     --project-name ruscmd \
+    --description 'NORMAL and CMDLINE modes support in Russian keyboard layout' \
     --input-file README.md \
-    --shift-heading-level-by -1 \
-    --vim-version Neovim
+    --shift-heading-level-by -1
 '''

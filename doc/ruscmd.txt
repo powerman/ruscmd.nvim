@@ -1,4 +1,4 @@
-*ruscmd.txt*              For Neovim             Last change: 2024 November 11
+*ruscmd.txt*       NORMAL and CMDLINE modes support in Russian keyboard layout
 
 ==============================================================================
 Table of Contents                                   *ruscmd-table-of-contents*
