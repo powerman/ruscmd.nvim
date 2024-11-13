@@ -60,3 +60,30 @@ describe('cabbrev', function()
         end, 'E492:')
     end)
 end)
+
+describe('default-mappings', function()
+    it('`Н` should map to `Y`', function()
+        child.lua [[ require('ruscmd').setup {} ]]
+        child.type_keys 'ддНЩ<Esc>З'
+        assert.same({ 'rem', unpack(lines) }, child_lines())
+    end)
+    it('`Н` should map to unmapped `Y`', function()
+        child.cmd 'nunmap Y'
+        child.lua [[ require('ruscmd').setup {} ]]
+        child.type_keys 'ддНЩ<Esc>З'
+        assert.same({ 'Lorem', '', unpack(lines) }, child_lines())
+    end)
+    it('should map all in default setup', function()
+        child.lua [[ require('ruscmd').setup {} ]]
+        assert.same('Y', child.lua_get [[vim.fn.maparg('Н', 'n')]])
+        assert.same('Q', child.lua_get [[vim.fn.maparg('Й', 'x')]])
+        assert.same('gc', child.lua_get [[vim.fn.maparg('пс', 'o')]])
+        assert.same('gc', child.lua_get [[vim.fn.maparg('пс', 'x')]])
+        assert.same('gc', child.lua_get [[vim.fn.maparg('пс', 'n')]])
+        assert.same('gcc', child.lua_get [[vim.fn.maparg('псс', 'n')]])
+        assert.same(']d', child.lua_get [[vim.fn.maparg('ъв', 'n')]])
+        assert.same('[d', child.lua_get [[vim.fn.maparg('хв', 'n')]])
+        assert.same('<C-W>d', child.lua_get [[vim.fn.maparg('<C-W>в', 'n')]])
+        assert.same('K', child.lua_get [[vim.fn.maparg('Л', 'n')]])
+    end)
+end)

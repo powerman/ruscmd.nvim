@@ -26,7 +26,19 @@ when you need to enter:
   | Shift-`6` | `^` - to the first non-blank character of the line   | `:` - command-line mode                                |
   | Shift-`7` | `&` - repeat last substitute                         | `?` - search backward                                  |
 
+- Support [default-mappings](https://neovim.io/doc/user/vim_diff.html#default-mappings):
+
+  - `Y-default`
+  - `v_Q-default`
+  - `gc-default v_gc-default o_gc-default`
+  - `gcc-default`
+  - `]d-default`
+  - `[d-default`
+  - `CTRL-W_d-default`
+  - `K-lsp-default`
+
 - Command-line mode commands supported by default:
+
   - `bd`
   - `bn`
   - `q`
