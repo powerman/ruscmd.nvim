@@ -13,22 +13,22 @@ lua = 'prefix:5.1'
 'ubi:jgm/pandoc' = 'latest'
 
 [tasks.'deps/tests/restore']
-run = 'nvim -l tests/minit.lua --lazy-restore'
+run = 'nvim -l tests/run.lua --lazy-restore'
 
 [tasks.'deps/tests/update']
-run = 'nvim -l tests/minit.lua --lazy-update'
+run = 'nvim -l tests/run.lua --lazy-update'
 
 [tasks.test]
 depends = ['lint', 'test/*']
 
 [tasks.'test/latest']
-run = 'nvim -l tests/minit.lua --minitest'
+run = 'nvim -l tests/run.lua --minitest'
 
 [tasks.'test/0.9']
 run = '''
 eval "$(mise activate --shims)"
 eval "$(mise sh neovim@0.9)"
-nvim -u tests/shim-nvim-0.9.lua -l tests/minit.lua --minitest
+nvim -u tests/shim-nvim-0.9.lua -l tests/run.lua --minitest
 '''
 
 [tasks.lint]
