@@ -12,6 +12,8 @@ when you need to enter:
 
 ## Features
 
+- Supported Neovim versions: 0.9+.
+
 - Supported Russian keyboard layouts: ЙЦУКЕН.
 
 - Support all NORMAL mode keys except (keys are shown in English layout):
