@@ -46,13 +46,13 @@ describe('cabbrev', function()
     end)
 
     it('should add new command', function()
-        child.lua [[ require('ruscmd').setup {cabbrev={ ['рудз']='help' }} ]]
+        child.lua [[ require('ruscmd').setup {cabbrev={ 'help' }} ]]
         child.type_keys 'Жрудз<CR>'
         assert.matches('^[*]help[.]txt[*]', child_lines()[1])
     end)
 
     it('should remove default command', function()
-        child.lua [[ require('ruscmd').setup {cabbrev={ ['й']='й' }} ]]
+        child.lua [[ require('ruscmd').setup {cabbrev={ 'bd', 'bn', 'qa', 'w', 'wq', 'wqa' }} ]]
         child.type_keys 'Жив!<CR>'
         assert.same({ '' }, child_lines())
         assert.error_match(function()

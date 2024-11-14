@@ -81,11 +81,10 @@ require('ruscmd').setup {
 {
   -- Setup command-line mode abbreviations.
   cabbrev = {
+      -- Keep default commands except 'bd' and 'bn':
+      'q', 'qa', 'w', 'wq', 'wqa',
       -- Add extra commands:
-      ['ефитуц'] = 'tabnew',
-      ['Дфян'] = 'Lazy',
-      -- Disable default commands by redefining them:
-      ['ив'] = 'ив', -- default: bd
+      'tabnew', 'Lazy',
   },
 }
 ```

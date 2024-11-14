@@ -1,17 +1,64 @@
 local M = {}
 
+local ruChar = {
+    q = 'й',
+    w = 'ц',
+    e = 'у',
+    r = 'к',
+    t = 'е',
+    y = 'н',
+    u = 'г',
+    i = 'ш',
+    o = 'щ',
+    p = 'з',
+    a = 'ф',
+    s = 'ы',
+    d = 'в',
+    f = 'а',
+    g = 'п',
+    h = 'р',
+    j = 'о',
+    k = 'л',
+    l = 'д',
+    z = 'я',
+    x = 'ч',
+    c = 'с',
+    v = 'м',
+    b = 'и',
+    n = 'т',
+    m = 'ь',
+    Q = 'Й',
+    W = 'Ц',
+    E = 'У',
+    R = 'К',
+    T = 'Е',
+    Y = 'Н',
+    U = 'Г',
+    I = 'Ш',
+    O = 'Щ',
+    P = 'З',
+    A = 'Ф',
+    S = 'Ы',
+    D = 'В',
+    F = 'А',
+    G = 'П',
+    H = 'Р',
+    J = 'О',
+    K = 'Л',
+    L = 'Д',
+    Z = 'Я',
+    X = 'Ч',
+    C = 'С',
+    V = 'М',
+    B = 'И',
+    N = 'Т',
+    M = 'Ь',
+}
+
 ---@class Config
----@field cabbrev? table<string,string> Abbreviations for Command-line mode
+---@field cabbrev? table<string> Command-line mode commands to be abbreviated in Russian.
 M.defaultConfig = {
-    cabbrev = {
-        ['ив'] = 'bd',
-        ['ит'] = 'bn',
-        ['й'] = 'q',
-        ['йф'] = 'qa',
-        ['ц'] = 'w',
-        ['цй'] = 'wq',
-        ['цйф'] = 'wqa',
-    },
+    cabbrev = { 'bd', 'bn', 'q', 'qa', 'w', 'wq', 'wqa' },
 }
 
 ---@type Config
@@ -28,9 +75,10 @@ M.setup = function(config)
         .. ',ё`,Ё~,х[,Х{,ъ],Ъ},ж\\;,Ж:,э\',Э",б\\,,Б<,ю.,Ю>'
 
     -- Command-line mode.
-    for lhs, rhs in pairs(M.cfg.cabbrev) do
+    for _, rhs in ipairs(M.cfg.cabbrev) do
+        local lhs = rhs:gsub('[a-zA-Z]', ruChar)
         local tmpl = "cabbrev <expr> %s getcmdtype()==':' && getcmdline()=='%s' ? '%s' : '%s'"
-        vim.cmd(string.format(tmpl, lhs, lhs, rhs, lhs))
+        vim.cmd(tmpl:format(lhs, lhs, rhs, lhs))
     end
 
     -- Default-mappings.
