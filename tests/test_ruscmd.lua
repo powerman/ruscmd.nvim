@@ -52,7 +52,10 @@ describe('cabbrev', function()
     end)
 
     it('should remove default command', function()
-        child.lua [[ require('ruscmd').setup {cabbrev={ 'bd', 'bn', 'qa', 'w', 'wq', 'wqa' }} ]]
+        child.lua [[ require('ruscmd').setup {
+            replace = true,
+            cabbrev = { 'bd', 'bn', 'qa', 'w', 'wq', 'wqa' },
+        } ]]
         child.type_keys 'Жив!<CR>'
         assert.same({ '' }, child_lines())
         assert.error_match(function()

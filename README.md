@@ -28,7 +28,9 @@ when you need to enter:
   | Shift-`6` | `^` - to the first non-blank character of the line   | `:` - command-line mode                                |
   | Shift-`7` | `&` - repeat last substitute                         | `?` - search backward                                  |
 
-- Support [default-mappings](https://neovim.io/doc/user/vim_diff.html#default-mappings):
+- Support user-provided global mappings.
+  Neovim global [default-mappings](https://neovim.io/doc/user/vim_diff.html#default-mappings)
+  are enabled by default:
 
   - `Y-default`
   - `v_Q-default`
@@ -39,7 +41,8 @@ when you need to enter:
   - `CTRL-W_d-default`
   - `K-lsp-default`
 
-- Command-line mode commands supported by default:
+- Support user-provided command-line mode commands.
+  These commands are enabled by default:
 
   - `bd`
   - `bn`
@@ -56,11 +59,11 @@ Install the plugin with your preferred package manager:
 ### [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
-{
-  "powerman/ruscmd.nvim",
-  opts = {
-      -- Your configuration here, if any.
-  },
+return {
+    'powerman/ruscmd.nvim',
+    opts = {
+        -- Your configuration here, if any.
+    },
 }
 ```
 
@@ -78,14 +81,44 @@ require('ruscmd').setup {
 ## Configuration
 
 ```lua
-{
-  -- Setup command-line mode abbreviations.
-  cabbrev = {
-      -- Keep default commands except 'bd' and 'bn':
-      'q', 'qa', 'w', 'wq', 'wqa',
-      -- Add extra commands:
-      'tabnew', 'Lazy',
-  },
+local defaults = {
+    cabbrev = { 'bd', 'bn', 'q', 'qa', 'w', 'wq', 'wqa' },
+    map = { -- :help default-mappings
+        n = { 'Y', 'gc', 'gcc', ']d', '[d', '<C-W>d', 'K' },
+        v = {},
+        x = { 'Q', 'gc' },
+        s = {},
+        o = { 'gc' },
+        i = {},
+        l = {},
+        c = {},
+        t = {},
+    },
+}
+```
+
+Example. Add more commands and global mappings:
+
+```lua
+require('ruscmd').setup {
+    cabbrev = { 'tabnew', 'Lazy' },
+    map = {
+        n = { 'sa', ']c', '[c' },
+    },
+}
+```
+
+Example. Disable default commands and global mappings:
+
+```lua
+require('ruscmd').setup {
+    replace = true, -- If true then user-provided keys will replace defaults for these keys.
+    cabbrev = {},
+    map = {
+        n = {},
+        x = {},
+        o = {},
+    },
 }
 ```
 

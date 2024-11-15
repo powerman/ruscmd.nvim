@@ -27,6 +27,7 @@ layouts when you need to enter:
 ==============================================================================
 2. Features                                                  *ruscmd-features*
 
+- Supported Neovim versions: 0.9+.
 - Supported Russian keyboard layouts: ЙЦУКЕН.
 - Support all NORMAL mode keys except (keys are shown in English layout):
       ----------------------------------------------------------------------------
@@ -45,7 +46,18 @@ layouts when you need to enter:
                 character of the line            
       Shift-7   & - repeat last substitute       ? - search backward
       ----------------------------------------------------------------------------
-- Command-line mode commands supported by default:
+- Support user-provided global mappings. Neovim global |default-mappings| are
+    enabled by default:
+    - `Y-default`
+    - `v_Q-default`
+    - `gc-default v_gc-default o_gc-default`
+    - `gcc-default`
+    - `]d-default`
+    - `[d-default`
+    - `CTRL-W_d-default`
+    - `K-lsp-default`
+- Support user-provided command-line mode commands. These commands are enabled by
+    default:
     - `bd`
     - `bn`
     - `q`
@@ -64,11 +76,11 @@ Install the plugin with your preferred package manager:
 LAZY.NVIM                                      *ruscmd-installation-lazy.nvim*
 
 >lua
-    {
-      "powerman/ruscmd.nvim",
-      opts = {
-          -- Your configuration here, if any.
-      },
+    return {
+        'powerman/ruscmd.nvim',
+        opts = {
+            -- Your configuration here, if any.
+        },
     }
 <
 
@@ -90,15 +102,44 @@ configured as shown above will do this for you).
 5. Configuration                                        *ruscmd-configuration*
 
 >lua
-    {
-      -- Setup command-line mode abbreviations.
-      cabbrev = {
-          -- Add extra commands:
-          ['ефитуц'] = 'tabnew',
-          ['Дфян'] = 'Lazy',
-          -- Disable default commands by redefining them:
-          ['ив'] = 'ив', -- default: bd
-      },
+    local defaults = {
+        cabbrev = { 'bd', 'bn', 'q', 'qa', 'w', 'wq', 'wqa' },
+        map = { -- :help default-mappings
+            n = { 'Y', 'gc', 'gcc', ']d', '[d', '<C-W>d', 'K' },
+            v = {},
+            x = { 'Q', 'gc' },
+            s = {},
+            o = { 'gc' },
+            i = {},
+            l = {},
+            c = {},
+            t = {},
+        },
+    }
+<
+
+Example. Add more commands and global mappings:
+
+>lua
+    require('ruscmd').setup {
+        cabbrev = { 'tabnew', 'Lazy' },
+        map = {
+            n = { 'sa', ']c', '[c' },
+        },
+    }
+<
+
+Example. Disable default commands and global mappings:
+
+>lua
+    require('ruscmd').setup {
+        replace = true, -- If true then user-provided keys will replace defaults for these keys.
+        cabbrev = {},
+        map = {
+            n = {},
+            x = {},
+            o = {},
+        },
     }
 <
 
