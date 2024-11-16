@@ -126,6 +126,18 @@ require('ruscmd').setup {
 
 Just do not switch from Russian to English keyboard layout in most cases.
 
+## Troubleshooting
+
+### Command-line commands without args does not work
+
+If simple commands without args like `:й` (`:q`) does not work then most likely
+reason is a conflict between `cabbrev` used by this plugin and `cnoremap <CR>`
+used by some other plugin (e.g. one implementing completions for the command-line mode).
+
+The right fix is to ask that other plugin author to change `cnoremap <CR>` to `cmap <CR>`.
+Sometimes you can work around this in your nvim config, see
+[example for nvim-cmp](https://github.com/hrsh7th/nvim-cmp/issues/2072).
+
 ## See also
 
 Similar plugin for Vim: <https://github.com/powerman/vim-plugin-ruscmd>.

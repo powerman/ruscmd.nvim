@@ -10,7 +10,9 @@ Table of Contents                                   *ruscmd-table-of-contents*
 4. Setup                                                        |ruscmd-setup|
 5. Configuration                                        |ruscmd-configuration|
 6. Usage                                                        |ruscmd-usage|
-7. See also                                                  |ruscmd-see-also|
+7. Troubleshooting                                    |ruscmd-troubleshooting|
+  - Command-line commands without args does not work|ruscmd-troubleshooting-command-line-commands-without-args-does-not-work|
+8. See also                                                  |ruscmd-see-also|
 
 ==============================================================================
 1. About                                                        *ruscmd-about*
@@ -27,7 +29,7 @@ layouts when you need to enter:
 ==============================================================================
 2. Features                                                  *ruscmd-features*
 
-- Supported Neovim versions: 0.9+.
+- Supported Neovim versions: 0.9.0+.
 - Supported Russian keyboard layouts: ЙЦУКЕН.
 - Support all NORMAL mode keys except (keys are shown in English layout):
       ----------------------------------------------------------------------------
@@ -151,7 +153,23 @@ Just do not switch from Russian to English keyboard layout in most cases.
 
 
 ==============================================================================
-7. See also                                                  *ruscmd-see-also*
+7. Troubleshooting                                    *ruscmd-troubleshooting*
+
+
+COMMAND-LINE COMMANDS WITHOUT ARGS DOES NOT WORK*ruscmd-troubleshooting-command-line-commands-without-args-does-not-work*
+
+If simple commands without args like `:й` (`:q`) does not work then most
+likely reason is a conflict between `cabbrev` used by this plugin and `cnoremap
+<CR>` used by some other plugin (e.g. one implementing completions for the
+command-line mode).
+
+The right fix is to ask that other plugin author to change `cnoremap <CR>` to
+`cmap <CR>`. Sometimes you can work around this in your nvim config, see
+example for nvim-cmp <https://github.com/hrsh7th/nvim-cmp/issues/2072>.
+
+
+==============================================================================
+8. See also                                                  *ruscmd-see-also*
 
 Similar plugin for Vim: <https://github.com/powerman/vim-plugin-ruscmd>.
 
