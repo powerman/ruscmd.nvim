@@ -12,7 +12,7 @@ when you need to enter:
 
 ## Features
 
-- Supported Neovim versions: 0.9+.
+- Supported Neovim versions: 0.9.0+.
 
 - Supported Russian keyboard layouts: ЙЦУКЕН.
 

@@ -3,7 +3,7 @@ experimental = true # Required to use lockfile.
 lockfile = true     # DO NOT FORGET TO `touch mise.lock`!
 
 [tools]
-neovim = ['latest', '0.9']
+neovim = ['latest', '0.9.0']
 lua = 'prefix:5.1'
 # An opinionated Lua code formatter
 'ubi:JohnnyMorganz/stylua' = 'latest'
