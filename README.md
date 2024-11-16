@@ -140,4 +140,6 @@ Sometimes you can work around this in your nvim config, see
 
 ## See also
 
-Similar plugin for Vim: <https://github.com/powerman/vim-plugin-ruscmd>.
+- Why do we need such a plugin: <https://github.com/neovim/neovim/issues/27776>.
+- Similar plugin for Vim: <https://github.com/powerman/vim-plugin-ruscmd>.
+- Alternative plugin for Neovim: <https://github.com/Wansmer/langmapper.nvim>.
