@@ -41,11 +41,11 @@ run = 'stylua --check .'
 run = 'selene .'
 
 [tasks.'generate/panvimdoc']
-env.VERSION = 'v4.0.1'
 env.DIR = '.buildcache/panvimdoc'
 run = '''set -eo pipefail
+export PANVIMDOC_VER="$(cat .panvimdoc.version)"
 test -d $DIR || git clone https://github.com/kdheepak/panvimdoc $DIR
-git -C $DIR co $VERSION 2>/dev/null || (git -C $DIR fetch && git -C $DIR co $VERSION)
+git -C $DIR co $PANVIMDOC_VER 2>/dev/null || (git -C $DIR fetch && git -C $DIR co $PANVIMDOC_VER)
 $DIR/panvimdoc.sh \
     --project-name ruscmd \
     --description 'NORMAL and CMDLINE modes support in Russian keyboard layout' \
