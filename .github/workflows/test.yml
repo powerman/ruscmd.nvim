@@ -25,6 +25,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: jdx/mise-action@v2
+        with:
+          experimental: true
 
       - name: Cache .buildcache
         uses: actions/cache@v4
@@ -34,6 +36,8 @@ jobs:
           restore-keys: |
             build-v1-${{ runner.os }}-${{ hashFiles('.*.version') }}-
             build-v1-${{ runner.os }}-
+
+      - run: mise ls
 
       - run: mise run deps/tests/restore
 
