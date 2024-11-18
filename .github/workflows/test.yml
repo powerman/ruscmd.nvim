@@ -42,5 +42,6 @@ jobs:
       - name: Check is generated doc is up-to-date
         run: |
           mise run generate/panvimdoc
+          git diff | cat
           git status --porcelain
           test -z "$(git status --porcelain)"
