@@ -35,7 +35,7 @@ jobs:
             build-v1-${{ runner.os }}-${{ hashFiles('.*.version') }}-
             build-v1-${{ runner.os }}-
 
-      - run: mise install
+      - run: mise run deps/tests/restore
 
       - run: mise run test
 
