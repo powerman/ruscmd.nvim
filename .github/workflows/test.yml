@@ -39,7 +39,12 @@ jobs:
 
       - run: mise ls
 
-      - run: mise run deps/tests/restore
+      - name: Restore test dependencies
+        run: |
+          mise run deps/tests/restore
+          # Workaround: Lazy on 1st run restores all but itself and hererocks, so try again.
+          git checkout -- tests/.config/nvim/lazy-lock.json
+          mise run deps/tests/restore
 
       - run: mise run test
 
