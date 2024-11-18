@@ -47,9 +47,9 @@ run = 'selene .'
 env.DIR = '.buildcache/panvimdoc'
 shell = 'bash -c'
 run = '''set -eo pipefail
-export PANVIMDOC_VER="$(cat .panvimdoc.version)"
+VER="$(cat .panvimdoc.version)"
 test -d $DIR || git clone https://github.com/kdheepak/panvimdoc $DIR
-git -C $DIR co $PANVIMDOC_VER 2>/dev/null || (git -C $DIR fetch && git -C $DIR co $PANVIMDOC_VER)
+git -C $DIR checkout $VER 2>/dev/null || (git -C $DIR fetch && git -C $DIR checkout $VER)
 $DIR/panvimdoc.sh \
     --project-name ruscmd \
     --description 'NORMAL and CMDLINE modes support in Russian keyboard layout' \
