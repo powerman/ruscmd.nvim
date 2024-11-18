@@ -50,7 +50,7 @@ run = '''set -xeo pipefail
 VER="$(cat .panvimdoc.version)"
 test -d $DIR || git clone https://github.com/kdheepak/panvimdoc $DIR
 git -C $DIR checkout $VER 2>/dev/null || (git -C $DIR fetch && git -C $DIR checkout $VER)
-bash -x $DIR/panvimdoc.sh \
+GITHUB_ACTIONS= bash -x $DIR/panvimdoc.sh \
     --project-name ruscmd \
     --description 'NORMAL and CMDLINE modes support in Russian keyboard layout' \
     --input-file README.md \
