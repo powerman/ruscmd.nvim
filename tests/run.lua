@@ -17,6 +17,7 @@ vim.env.XDG_STATE_HOME = vim.uv.cwd() .. '/.buildcache/tests/state'
 ---@type LazyConfig
 local config = {
     defaults = { version = '*' },
+    rocks = { hererocks = true },
     spec = {
         'lunarmodules/luassert',
         {
