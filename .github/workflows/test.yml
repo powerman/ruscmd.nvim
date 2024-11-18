@@ -1,0 +1,43 @@
+name: Test
+
+on:
+  push:
+    tags: ["v*"]
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+  workflow_dispatch:
+
+# Cancel testing of a previous commit for the same branch.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: jdx/mise-action@v2
+
+      - name: Cache .buildcache
+        uses: actions/cache@v4
+        with:
+          path: .buildcache
+          key: build-v1-${{ runner.os }}-${{ hashFiles('.*.version') }}-${{ hashFiles('tests/.config/nvim/lazy-lock.json') }}
+          restore-keys: |
+            build-v1-${{ runner.os }}-${{ hashFiles('.*.version') }}-
+            build-v1-${{ runner.os }}-
+
+      - run: mise install
+
+      - run: mise run test
+
+      - name: Check is generated doc is up-to-date
+        run: mise run generate/panvimdoc && test -z "$(git status --porcelain)"
