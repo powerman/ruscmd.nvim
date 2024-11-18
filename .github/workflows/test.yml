@@ -8,6 +8,10 @@ on:
     branches: ["master"]
   workflow_dispatch:
 
+defaults:
+  run:
+    shell: bash
+
 # Cancel testing of a previous commit for the same branch.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
