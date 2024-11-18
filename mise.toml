@@ -45,6 +45,7 @@ run = 'selene .'
 
 [tasks.'generate/panvimdoc']
 env.DIR = '.buildcache/panvimdoc'
+shell = 'bash -c'
 run = '''set -eo pipefail
 export PANVIMDOC_VER="$(cat .panvimdoc.version)"
 test -d $DIR || git clone https://github.com/kdheepak/panvimdoc $DIR
