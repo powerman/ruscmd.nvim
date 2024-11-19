@@ -12,7 +12,7 @@ concurrency:
 permissions: {}
 
 jobs:
-  lint:
+  lint-pr-title:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     permissions:
@@ -34,9 +34,9 @@ jobs:
             - does start with an uppercase character,
             - does not end with a period.
 
-  report:
+  report-pr-title-lint-error:
     if: ${{ always() }}
-    needs: lint
+    needs: lint-pr-title
     runs-on: ubuntu-latest
     timeout-minutes: 3
     permissions:
@@ -44,7 +44,7 @@ jobs:
 
     steps:
       - uses: marocchino/sticky-pull-request-comment@v2
-        if: ${{ needs.lint.outputs.error_message != null }}
+        if: ${{ needs.lint-pr-title.outputs.error_message != null }}
         with:
           header: pr-title-lint-error
           message: |
@@ -55,12 +55,12 @@ jobs:
             Details:
 
             ```
-            ${{ needs.lint.outputs.error_message }}
+            ${{ needs.lint-pr-title.outputs.error_message }}
             ```
 
       # Delete a previous comment when the issue has been resolved.
       - uses: marocchino/sticky-pull-request-comment@v2
-        if: ${{ needs.lint.outputs.error_message == null }}
+        if: ${{ needs.lint-pr-title.outputs.error_message == null }}
         with:
           header: pr-title-lint-error
           delete: true
