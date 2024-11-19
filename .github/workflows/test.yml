@@ -25,8 +25,6 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: jdx/mise-action@v2
-        with:
-          experimental: true
 
       - name: Cache .buildcache
         uses: actions/cache@v4
@@ -39,18 +37,22 @@ jobs:
 
       - run: mise ls
 
-      - name: Restore test dependencies
+      - name: DEBUG Check results of `mise install`
         run: |
-          mise run deps/tests/restore
-          # Workaround: Lazy on 1st run restores all but itself and hererocks, so try again.
+          git status
+          git diff | cat
+
+      - run: mise run deps/tests/restore
+
+      - name: WORKAROUND Restore rest of test dependencies
+        run: |
+          # Lazy on 1st run restores all but itself and hererocks, so try again.
           git checkout -- tests/.config/nvim/lazy-lock.json
           mise run deps/tests/restore
 
       - run: mise run test
 
-      - name: Check is generated doc is up-to-date
+      - name: Check is generated doc up-to-date
         run: |
           mise run generate/panvimdoc
-          git diff | cat
-          git status --porcelain
-          test -z "$(git status --porcelain)"
+          test -z "$(git status --porcelain -- ./doc)"

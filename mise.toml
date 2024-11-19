@@ -27,11 +27,10 @@ run = 'nvim -l tests/run.lua --minitest'
 [tasks.'test/0.9']
 shell = 'bash -c'
 run = '''
+mise exec neovim@0.9 -- nvim --version
 eval "$(mise activate --shims bash)"
-eval "$(mise hook-env -s bash)"
-eval "$(mise sh neovim@0.9)"
-nvim --version
-nvim -u tests/shim_nvim-0.9.lua -l tests/run.lua --minitest
+mise exec neovim@0.9 -- nvim --version
+mise exec neovim@0.9 -- nvim -u tests/shim_nvim-0.9.lua -l tests/run.lua --minitest
 '''
 
 [tasks.lint]
