@@ -13,7 +13,13 @@ lua = 'prefix:5.1'
 'ubi:jgm/pandoc' = 'latest'
 
 [tasks.'deps/tests/restore']
-run = 'nvim -l tests/run.lua --lazy-restore'
+shell = 'bash -eo pipefail -c'
+run = '''
+nvim -l tests/run.lua --lazy-restore
+# Workaround https://github.com/folke/lazy.nvim/issues/1787#issuecomment-2466916283.
+git checkout -- tests/.config/nvim/lazy-lock.json
+nvim -l tests/run.lua --lazy-restore
+'''
 
 [tasks.'deps/tests/update']
 run = 'nvim -l tests/run.lua --lazy-update'

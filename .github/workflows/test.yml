@@ -39,12 +39,6 @@ jobs:
 
       - run: mise run deps/tests/restore
 
-      - name: WORKAROUND Restore rest of test dependencies
-        run: |
-          # Lazy on 1st run restores all but itself and hererocks, so try again.
-          git checkout -- tests/.config/nvim/lazy-lock.json
-          mise run deps/tests/restore
-
       - run: mise run test
 
       - name: Check is generated doc up-to-date

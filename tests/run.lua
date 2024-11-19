@@ -19,6 +19,7 @@ local config = {
     defaults = { version = '*' },
     rocks = { hererocks = true },
     spec = {
+        { 'luarocks/hererocks', version = false },
         'lunarmodules/luassert',
         {
             'echasnovski/mini.test',
@@ -36,7 +37,7 @@ local config = {
 require('tests.lazy_bootstrap').setup()
 
 if vim.list_contains(arg or {}, '--lazy-restore') then
-    require('lazy').update = require('lazy').restore -- Restores all but lazy. https://github.com/folke/lazy.nvim/issues/1787#issuecomment-2466916283
+    require('lazy').update = require('lazy').restore
 elseif not vim.list_contains(arg or {}, '--lazy-update') then
     require('lazy').update = require('lazy').install -- Avoid ~2 sec delay before running tests.
 end
