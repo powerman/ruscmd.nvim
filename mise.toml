@@ -38,11 +38,10 @@ run = 'selene .'
 
 [tasks.'generate/panvimdoc']
 env.DIR = '.buildcache/panvimdoc'
-# shell = 'bash -eo pipefail -c'
+shell = 'bash -eo pipefail -c'
 run = '''
 VER="$(cat .panvimdoc.version)"
 test -d $DIR || git clone https://github.com/kdheepak/panvimdoc $DIR
-false
 git -C $DIR checkout $VER 2>/dev/null || (git -C $DIR fetch && git -C $DIR checkout $VER)
 GITHUB_ACTIONS= $DIR/panvimdoc.sh \
     --project-name ruscmd \
