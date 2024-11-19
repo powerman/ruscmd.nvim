@@ -25,11 +25,7 @@ depends = ['lint', 'test/*']
 run = 'nvim -l tests/run.lua --minitest'
 
 [tasks.'test/0.9']
-run = '''
-eval "$(mise activate --shims)"
-eval "$(mise sh neovim@0.9)"
-nvim -u tests/shim_nvim-0.9.lua -l tests/run.lua --minitest
-'''
+run = 'mise exec neovim@0.9 -- nvim -u tests/shim_nvim-0.9.lua -l tests/run.lua --minitest'
 
 [tasks.lint]
 depends = ['lint/*']
@@ -42,11 +38,12 @@ run = 'selene .'
 
 [tasks.'generate/panvimdoc']
 env.DIR = '.buildcache/panvimdoc'
-run = '''set -eo pipefail
-export PANVIMDOC_VER="$(cat .panvimdoc.version)"
+shell = 'bash -eo pipefail -c'
+run = '''
+VER="$(cat .panvimdoc.version)"
 test -d $DIR || git clone https://github.com/kdheepak/panvimdoc $DIR
-git -C $DIR co $PANVIMDOC_VER 2>/dev/null || (git -C $DIR fetch && git -C $DIR co $PANVIMDOC_VER)
-$DIR/panvimdoc.sh \
+git -C $DIR checkout $VER 2>/dev/null || (git -C $DIR fetch && git -C $DIR checkout $VER)
+GITHUB_ACTIONS= $DIR/panvimdoc.sh \
     --project-name ruscmd \
     --description 'NORMAL and CMDLINE modes support in Russian keyboard layout' \
     --input-file README.md \

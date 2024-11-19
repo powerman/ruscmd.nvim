@@ -4,6 +4,6 @@ neovim = [
     "0.10.2",
     "0.9.0",
 ]
-"ubi:JohnnyMorganz/stylua" = "0.20.0"
+"ubi:JohnnyMorganz/stylua" = "2.0.1"
 "ubi:Kampfkarren/selene" = "0.27.1"
 "ubi:jgm/pandoc" = "3.5"

@@ -40,9 +40,13 @@ describe('cabbrev', function()
         child.lua [[ require('ruscmd').setup {} ]]
         child.type_keys 'Жив!<CR>'
         assert.same({ '' }, child_lines())
-        assert.error_matches(function()
+        local err = assert.error(function()
             child.type_keys 'Жй<CR>'
-        end, 'Invalid channel')
+        end)
+        assert.is_true(
+            err:match 'Invalid channel' ~= nil or err:match 'closed by the client' ~= nil,
+            string.format('error %q matches "Invalid channel" or "closed by the client"', err)
+        )
     end)
 
     it('should add new command', function()
