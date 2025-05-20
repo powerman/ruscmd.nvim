@@ -24,6 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - run: sudo apt-get install libreadline-dev # Needed to compile lua-5.1.
       - uses: jdx/mise-action@v2
 
       - name: Cache .buildcache
