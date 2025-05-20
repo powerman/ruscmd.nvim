@@ -4,7 +4,7 @@ lockfile = true     # DO NOT FORGET TO `touch mise.lock`!
 
 [tools]
 neovim = ['latest', '0.9.0']
-lua = 'prefix:5.1'
+'asdf:mise-plugins/mise-lua' = 'prefix:5.1'
 # An opinionated Lua code formatter
 'ubi:JohnnyMorganz/stylua' = 'latest'
 # A blazing-fast modern Lua linter written in Rust
