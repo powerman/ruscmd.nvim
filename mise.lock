@@ -1,9 +1,35 @@
-[tools]
-lua = "5.1.5"
-neovim = [
-    "0.10.2",
-    "0.9.0",
-]
-"ubi:JohnnyMorganz/stylua" = "2.0.1"
-"ubi:Kampfkarren/selene" = "0.27.1"
-"ubi:jgm/pandoc" = "3.5"
+[tools."asdf:mise-plugins/mise-lua"]
+version = "5.1.5"
+backend = "asdf:mise-plugins/mise-lua"
+
+[[tools.neovim]]
+version = "0.11.1"
+backend = "aqua:neovim/neovim"
+
+[tools.neovim.checksums]
+"nvim-linux-x86_64.tar.gz" = "sha256:92ecb2dbdfbd0c6d79b522e07c879f7743c5d395d0a4f13b0d4f668f8565527a"
+
+[[tools.neovim]]
+version = "0.9.0"
+backend = "aqua:neovim/neovim"
+
+[tools."ubi:JohnnyMorganz/stylua"]
+version = "2.1.0"
+backend = "ubi:JohnnyMorganz/stylua"
+
+[tools."ubi:JohnnyMorganz/stylua".checksums]
+stylua-linux-x86_64 = "sha256:ed1d6d306ccd68fd7e7ef6b0cc5adbdc0fe839d09403fc7fb245b29175e3afb4"
+
+[tools."ubi:Kampfkarren/selene"]
+version = "0.28.0"
+backend = "ubi:Kampfkarren/selene"
+
+[tools."ubi:Kampfkarren/selene".checksums]
+selene-linux-x86_64 = "sha256:09969e03246a019ef107cb153be04a13be623880216cf5fc20bf3ca0120e3614"
+
+[tools."ubi:jgm/pandoc"]
+version = "3.7.0.1"
+backend = "ubi:jgm/pandoc"
+
+[tools."ubi:jgm/pandoc".checksums]
+pandoc-linux-x86_64 = "sha256:ccc87df5f7c5d217870fe5e7601600246b307a0b59db7d08cba097c2de91f517"
