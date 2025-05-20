@@ -13,7 +13,7 @@ local M = {}
 ---@field c? table<string>
 ---@field t? table<string>
 
----@class Config
+---@class ruscmd.Config
 ---@field cabbrev? table<string> Command-line mode commands to be abbreviated in Russian.
 ---@field map? ruscmd.OptionMap Global mappings to be remapped from Russian keys.
 local defaults = {
@@ -25,11 +25,11 @@ local defaults = {
     },
 }
 
----@class ruscmd.Options: Config
+---@class ruscmd.Options: ruscmd.Config
 ---@field replace? boolean If true then user-provided keys will replace defaults for these keys.
 
 ---@param opts ruscmd.Options
----@return Config
+---@return ruscmd.Config
 M.new = function(opts)
     vim.validate { opts = { opts, 'table', true } }
     opts = opts or {}
