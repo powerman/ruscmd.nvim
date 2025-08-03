@@ -1,35 +1,80 @@
+[tools.actionlint]
+version = "1.7.7"
+backend = "aqua:rhysd/actionlint"
+
+[tools.actionlint.platforms.linux-x64]
+checksum = "sha256:023070a287cd8cccd71515fedc843f1985bf96c436b7effaecce67290e7e0757"
+size = 2080472
+url = "https://github.com/rhysd/actionlint/releases/download/v1.7.7/actionlint_1.7.7_linux_amd64.tar.gz"
+
 [tools."asdf:mise-plugins/mise-lua"]
 version = "5.1.5"
 backend = "asdf:mise-plugins/mise-lua"
 
+[tools.gh]
+version = "2.76.2"
+backend = "aqua:cli/cli"
+
+[tools.gh.platforms.linux-x64]
+checksum = "sha256:62544b0f3759bbf1155c0ac3d75838b5fe23d66dfb75cf8368f84fff8f82b93e"
+size = 17878637
+url = "https://github.com/cli/cli/releases/download/v2.76.2/gh_2.76.2_linux_amd64.tar.gz"
+
+[tools.git-cliff]
+version = "2.10.0"
+backend = "aqua:orhun/git-cliff"
+
+[tools.git-cliff.platforms.linux-x64]
+checksum = "sha512:1fa2b3409add2e8f576d5a9520ae4e513edf1b8dafb477f65fa65f0a51d2efeb476cb1c86b58f277d5705a9cfc0392dee93f80a253806675379a785410f04038"
+size = 7239814
+url = "https://github.com/orhun/git-cliff/releases/download/v2.10.0/git-cliff-2.10.0-x86_64-unknown-linux-musl.tar.gz"
+
 [[tools.neovim]]
-version = "0.11.1"
+version = "0.11.3"
 backend = "aqua:neovim/neovim"
 
-[tools.neovim.checksums]
-"nvim-linux-x86_64.tar.gz" = "sha256:92ecb2dbdfbd0c6d79b522e07c879f7743c5d395d0a4f13b0d4f668f8565527a"
+[tools.neovim.platforms.linux-x64]
+checksum = "blake3:2028f31e20dd8e50399dc80da13b0ef626b7db83885f65098726626aa44d174b"
+size = 10941468
+url = "https://github.com/neovim/neovim/releases/download/v0.11.3/nvim-linux-x86_64.tar.gz"
 
 [[tools.neovim]]
-version = "0.9.0"
+version = "0.10.4"
 backend = "aqua:neovim/neovim"
 
-[tools."ubi:JohnnyMorganz/stylua"]
-version = "2.1.0"
-backend = "ubi:JohnnyMorganz/stylua"
+[tools.neovim.platforms.linux-x64]
+checksum = "sha256:95aaa8e89473f5421114f2787c13ae0ec6e11ebbd1a13a1bd6fcf63420f8073f"
+size = 12007371
+url = "https://github.com/neovim/neovim/releases/download/v0.10.4/nvim-linux-x86_64.tar.gz"
 
-[tools."ubi:JohnnyMorganz/stylua".checksums]
-stylua-linux-x86_64 = "sha256:ed1d6d306ccd68fd7e7ef6b0cc5adbdc0fe839d09403fc7fb245b29175e3afb4"
+[[tools.neovim]]
+version = "0.9.5"
+backend = "aqua:neovim/neovim"
 
-[tools."ubi:Kampfkarren/selene"]
-version = "0.28.0"
-backend = "ubi:Kampfkarren/selene"
+[tools.neovim.platforms.linux-x64]
+checksum = "sha256:44ee395d9b5f8a14be8ec00d3b8ead34e18fe6461e40c9c8c50e6956d643b6ca"
+size = 11036109
+url = "https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz"
 
-[tools."ubi:Kampfkarren/selene".checksums]
-selene-linux-x86_64 = "sha256:09969e03246a019ef107cb153be04a13be623880216cf5fc20bf3ca0120e3614"
-
-[tools."ubi:jgm/pandoc"]
-version = "3.7.0.1"
+[tools.pandoc]
+version = "3.7.0.2"
 backend = "ubi:jgm/pandoc"
 
-[tools."ubi:jgm/pandoc".checksums]
-pandoc-linux-x86_64 = "sha256:ccc87df5f7c5d217870fe5e7601600246b307a0b59db7d08cba097c2de91f517"
+[tools.pandoc.platforms.linux-x64-pandoc]
+checksum = "blake3:d771aa2a0fa9e958f70ebac4511251433a5798129e4ae8b56a4a29876add0a30"
+
+[tools.stylua]
+version = "2.1.0"
+backend = "aqua:JohnnyMorganz/StyLua"
+
+[tools.stylua.platforms.linux-x64]
+checksum = "blake3:54b7956ba032f1db1315795b642dab09b8b93b846ede0eee638a84e0be823ffa"
+size = 3139437
+url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.1.0/stylua-linux-x86_64-musl.zip"
+
+[tools."ubi:Kampfkarren/selene"]
+version = "0.29.0"
+backend = "ubi:Kampfkarren/selene"
+
+[tools."ubi:Kampfkarren/selene".platforms.linux-x64-selene]
+checksum = "blake3:3ea332ee0e2e641308e0ce2ecfea55bd6604cbbdb405d21f914bc5cd38e0bccc"

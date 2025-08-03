@@ -1,5 +1,5 @@
 std = "lua51+vim"
-exclude = [".buildcache/*"]
+exclude = [".cache/*"]
 
 [lints]
 mixed_table = "allow"

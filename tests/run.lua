@@ -10,9 +10,9 @@ Usage: nvim -l tests/run.lua [--lazy-restore|--lazy-update] [--minitest|--busted
 --]==]
 
 vim.env.XDG_CONFIG_HOME = vim.uv.cwd() .. '/tests/.config'
-vim.env.XDG_CACHE_HOME = vim.uv.cwd() .. '/.buildcache/tests/cache'
-vim.env.XDG_DATA_HOME = vim.uv.cwd() .. '/.buildcache/tests/data'
-vim.env.XDG_STATE_HOME = vim.uv.cwd() .. '/.buildcache/tests/state'
+vim.env.XDG_CACHE_HOME = vim.uv.cwd() .. '/.cache/tests/cache'
+vim.env.XDG_DATA_HOME = vim.uv.cwd() .. '/.cache/tests/data'
+vim.env.XDG_STATE_HOME = vim.uv.cwd() .. '/.cache/tests/state'
 
 ---@type LazyConfig
 local config = {
