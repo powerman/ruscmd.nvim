@@ -4,9 +4,8 @@ lockfile = true     # DO NOT FORGET TO `touch mise.lock` if mise.lock does not e
 
 
 [tools]
-# Use 'prefix:0.11' instead of 'latest' to work around https://github.com/jdx/mise/discussions/5906.
-neovim = ['prefix:0.11', 'prefix:0.10', 'prefix:0.9']
-'asdf:mise-plugins/mise-lua' = 'prefix:5.1'
+neovim = ['latest', 'sub-0.1:latest', '0.9']
+'asdf:mise-plugins/mise-lua' = '5.1'
 
 #--- Generate
 # Universal markup converter
@@ -109,13 +108,16 @@ description = 'Lint Lua files'
 run = 'selene .'
 
 [tasks.'test:latest']
-description = 'Run tests for a whole project'
+description = 'Run tests for a whole project with latest Neovim version'
+tools.neovim = 'latest'
 run = 'nvim -l tests/run.lua --minitest'
 
-[tasks.'test:0_10']
-description = 'Run tests for a whole project with Neovim 0.10'
-run = 'mise exec neovim@prefix:0.10 -- nvim -l tests/run.lua --minitest'
+[tasks.'test:previous']
+description = 'Run tests for a whole project with previous Neovim version'
+tools.neovim = 'sub-0.1:latest'
+run = 'nvim -l tests/run.lua --minitest'
 
 [tasks.'test:0_9']
 description = 'Run tests for a whole project with Neovim 0.9'
-run = 'mise exec neovim@prefix:0.9 -- nvim -u tests/shim_nvim-0.9.lua -l tests/run.lua --minitest'
+tools.neovim = '0.9'
+run = 'nvim -u tests/shim_nvim-0.9.lua -l tests/run.lua --minitest'
