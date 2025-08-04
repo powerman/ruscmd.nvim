@@ -4,6 +4,7 @@ lockfile = true     # DO NOT FORGET TO `touch mise.lock` if mise.lock does not e
 
 
 [tools]
+# Use 'prefix:0.11' instead of 'latest' to work around https://github.com/jdx/mise/discussions/5906.
 neovim = ['prefix:0.11', 'prefix:0.10', 'prefix:0.9']
 'asdf:mise-plugins/mise-lua' = 'prefix:5.1'
 
