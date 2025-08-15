@@ -1,5 +1,8 @@
 local assert = require 'luassert'
 
+-- Clear module cache to avoid race conditions
+package.loaded['ruscmd.keymap'] = nil
+
 local M = require 'ruscmd.keymap'
 
 describe('command', function()

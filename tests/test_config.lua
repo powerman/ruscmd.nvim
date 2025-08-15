@@ -1,5 +1,9 @@
 local assert = require 'luassert'
 
+-- Clear module cache to avoid race conditions
+package.loaded['ruscmd.config'] = nil
+package.loaded['ruscmd.validate'] = nil
+
 local M = require 'ruscmd.config'
 local defaults = {
     cabbrev = { 'bd', 'bn', 'q', 'qa', 'w', 'wq', 'wqa' },
