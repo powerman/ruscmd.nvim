@@ -1,3 +1,5 @@
+local compat = require 'ruscmd.compat'
+
 local M = {}
 
 ---@alias TypeNameEnum "table"|"t"|"string"|"s"|"number"|"n"|"boolean"|"b"|"function"|"f"|"nil"|"thread"|"userdata"
@@ -6,8 +8,8 @@ local M = {}
 --- Validate list values.
 ---
 ---@usage lua<
----     vim.validate({arg1={value, Validate.list('arg1', 'string', true), 'table<string>?'}})
----     vim.validate({arg1={value, Validate.list('arg1', 's|n'), 'table<string|number>'}})
+---     vim.validate('arg1', value, Validate.list('arg1', 'string', true), true, 'table<string>?')
+---     vim.validate('arg1', value, Validate.list('arg1', 'string|number'), false, 'table<string|number>')
 --->
 ---@param arg_name string
 ---@param val_type TypeName
@@ -25,7 +27,7 @@ M.list = function(arg_name, val_type, is_optional)
             if type(k) ~= 'number' then
                 return false, 'table is not a list'
             end
-            vim.validate { [string.format('%s[%s]', arg_name, k)] = { v, val_type } }
+            compat.validate(string.format('%s[%s]', arg_name, k), v, val_type)
         end
         return true
     end

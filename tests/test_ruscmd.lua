@@ -1,5 +1,8 @@
 local assert = require 'luassert'
 
+-- Clear module cache to avoid race conditions
+require('tests.helpers').clear_modules 'ruscmd'
+
 local child = require('mini.test').new_child_neovim()
 teardown(child.stop)
 

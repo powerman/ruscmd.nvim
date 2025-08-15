@@ -1,4 +1,5 @@
 local V = require 'ruscmd.validate'
+local compat = require 'ruscmd.compat'
 
 local M = {}
 
@@ -31,29 +32,29 @@ local defaults = {
 ---@param opts ruscmd.Options
 ---@return ruscmd.Config
 M.new = function(opts)
-    vim.validate { opts = { opts, 'table', true } }
+    compat.validate('opts', opts, 'table', true)
     opts = opts or {}
-    vim.validate {
-        ['opts.replace'] = { opts.replace, 'b', true },
-        ['opts.cabbrev'] = {
-            opts.cabbrev,
-            V.list('opts.cabbrev', 's', true),
-            'table<string>?',
-        },
-        ['opts.map'] = { opts.map, 'table', true },
-    }
+    compat.validate('opts.replace', opts.replace, 'boolean', true)
+    compat.validate(
+        'opts.cabbrev',
+        opts.cabbrev,
+        V.list('opts.cabbrev', 'string', true),
+        true,
+        'table<string>?'
+    )
+    compat.validate('opts.map', opts.map, 'table', true)
     opts.map = opts.map or {}
-    vim.validate {
-        ['opts.map.n'] = { opts.map.n, V.list('opts.map.n', 's', true), 'table<string>?' },
-        ['opts.map.v'] = { opts.map.v, V.list('opts.map.v', 's', true), 'table<string>?' },
-        ['opts.map.x'] = { opts.map.x, V.list('opts.map.x', 's', true), 'table<string>?' },
-        ['opts.map.s'] = { opts.map.s, V.list('opts.map.s', 's', true), 'table<string>?' },
-        ['opts.map.o'] = { opts.map.o, V.list('opts.map.o', 's', true), 'table<string>?' },
-        ['opts.map.i'] = { opts.map.i, V.list('opts.map.i', 's', true), 'table<string>?' },
-        ['opts.map.l'] = { opts.map.l, V.list('opts.map.l', 's', true), 'table<string>?' },
-        ['opts.map.c'] = { opts.map.c, V.list('opts.map.c', 's', true), 'table<string>?' },
-        ['opts.map.t'] = { opts.map.t, V.list('opts.map.t', 's', true), 'table<string>?' },
-    }
+
+    local map_modes = { 'n', 'v', 'x', 's', 'o', 'i', 'l', 'c', 't' }
+    for _, mode in ipairs(map_modes) do
+        compat.validate(
+            'opts.map.' .. mode,
+            opts.map[mode],
+            V.list('opts.map.' .. mode, 'string', true),
+            true,
+            'table<string>?'
+        )
+    end
 
     local cfg = vim.tbl_deep_extend('force', {}, defaults, opts)
     cfg.replace = nil

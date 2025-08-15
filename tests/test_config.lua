@@ -1,8 +1,7 @@
 local assert = require 'luassert'
 
 -- Clear module cache to avoid race conditions
-package.loaded['ruscmd.config'] = nil
-package.loaded['ruscmd.validate'] = nil
+require('tests.helpers').clear_modules 'ruscmd'
 
 local M = require 'ruscmd.config'
 local defaults = {

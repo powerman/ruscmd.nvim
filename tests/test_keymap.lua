@@ -1,7 +1,7 @@
 local assert = require 'luassert'
 
 -- Clear module cache to avoid race conditions
-package.loaded['ruscmd.keymap'] = nil
+require('tests.helpers').clear_modules 'ruscmd'
 
 local M = require 'ruscmd.keymap'
 
