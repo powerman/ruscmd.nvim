@@ -1,5 +1,11 @@
 # ruscmd.nvim
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Neovim version](https://img.shields.io/badge/Neovim-0.9%2B-57A143?style=flat&logo=neovim&logoColor=white)](https://neovim.io/)
+[![Made with Lua](https://img.shields.io/badge/Made%20with%20Lua-2C2D72?style=flat&logo=lua&logoColor=white)](https://www.lua.org/)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/powerman/ruscmd.nvim/test.yml?logo=github&label=build)](https://github.com/powerman/ruscmd.nvim/actions/workflows/test.yml)
+[![Release](https://img.shields.io/github/v/release/powerman/ruscmd.nvim)](https://github.com/powerman/ruscmd.nvim/releases/latest)
+
 ## About
 
 Neovim plugin to use NORMAL and CMDLINE modes with Russian keyboard layout.
@@ -31,7 +37,6 @@ when you need to enter:
 - Support user-provided global mappings.
   Neovim global [default-mappings](https://neovim.io/doc/user/vim_diff.html#default-mappings)
   are enabled by default:
-
   - `Y-default`
   - `v_Q-default`
   - `gc-default v_gc-default o_gc-default`
@@ -43,7 +48,6 @@ when you need to enter:
 
 - Support user-provided command-line mode commands.
   These commands are enabled by default:
-
   - `bd`
   - `bn`
   - `q`
