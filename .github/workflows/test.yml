@@ -3,9 +3,9 @@ name: Test
 on:
   workflow_dispatch:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
-    branches: [main, master]
+    branches: [main]
 
 # Cancel testing of a previous commit for the same branch.
 concurrency:

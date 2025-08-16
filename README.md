@@ -1,10 +1,10 @@
 # ruscmd.nvim
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Neovim version](https://img.shields.io/badge/Neovim-0.9%2B-57A143?style=flat&logo=neovim&logoColor=white)](https://neovim.io/)
-[![Made with Lua](https://img.shields.io/badge/Made%20with%20Lua-2C2D72?style=flat&logo=lua&logoColor=white)](https://www.lua.org/)
-[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/powerman/ruscmd.nvim/test.yml?logo=github&label=build)](https://github.com/powerman/ruscmd.nvim/actions/workflows/test.yml)
-[![Release](https://img.shields.io/github/v/release/powerman/ruscmd.nvim)](https://github.com/powerman/ruscmd.nvim/releases/latest)
+[![License MIT](https://img.shields.io/badge/license-MIT-royalblue.svg)](LICENSE)
+[![Neovim 0.9+](https://img.shields.io/badge/Neovim-0.9%2B-royalblue?logo=neovim&logoColor=white)](https://neovim.io/)
+[![Lua 5.1](https://img.shields.io/badge/Lua-5.1-blue)](https://www.lua.org/)
+[![Test](https://img.shields.io/github/actions/workflow/status/powerman/ruscmd.nvim/test.yml?label=test)](https://github.com/powerman/ruscmd.nvim/actions/workflows/test.yml)
+[![Release](https://img.shields.io/github/v/release/powerman/ruscmd.nvim?color=blue)](https://github.com/powerman/ruscmd.nvim/releases/latest)
 
 ## About
 
@@ -18,7 +18,7 @@ when you need to enter:
 
 ## Features
 
-- Supported Neovim versions: 0.9.0+.
+- Supported Neovim versions: 0.9+.
 
 - Supported Russian keyboard layouts: ЙЦУКЕН.
 
