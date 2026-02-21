@@ -29,7 +29,7 @@ jobs:
           packages: libreadline-dev
 
       - uses: jdx/mise-action@v3
-      - run: git reset --hard # Work around https://github.com/jdx/mise/discussions/5910.
+      - run: git reset --hard # Work around https://github.com/jdx/mise/discussions/8270.
 
       - name: Cache .cache
         uses: actions/cache@v4
