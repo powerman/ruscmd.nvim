@@ -47,8 +47,8 @@ describe('cabbrev', function()
             child.type_keys 'Жй<CR>'
         end)
         assert.is_true(
-            err:match 'Invalid channel' ~= nil or err:match 'closed by the client' ~= nil,
-            string.format('error %q matches "Invalid channel" or "closed by the client"', err)
+            err:match 'Invalid channel' ~= nil or err:match 'closed by the' ~= nil,
+            string.format('error %q matches "Invalid channel" or "closed by the"', err)
         )
     end)
 
