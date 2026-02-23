@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Install packages needed to compile lua-5.1
         uses: awalsh128/cache-apt-pkgs-action@v1
