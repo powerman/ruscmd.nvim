@@ -68,8 +68,8 @@ description = 'Run all tests'
 depends = ['test:*']
 
 [tasks.default]
-description = 'Run all linters and tests'
-depends = ['lint', 'test']
+description = 'Run all linters and tests, generate documentation'
+depends = ['lint', 'test', 'generate']
 
 [tasks.ci]
 description = 'Run all CI tasks'
