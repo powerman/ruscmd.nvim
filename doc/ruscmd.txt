@@ -1,4 +1,4 @@
-*ruscmd.txt*       NORMAL and CMDLINE modes support in Russian keyboard layout
+*ruscmd.txt*Neovim plugin to use NORMAL and CMDLINE modes with Russian keyboard layout.
 
 ==============================================================================
 Table of Contents                                   *ruscmd-table-of-contents*
@@ -34,7 +34,7 @@ layouts when you need to enter:
 ==============================================================================
 2. Features                                                  *ruscmd-features*
 
-- Supported Neovim versions: 0.9+.
+- Supported Neovim versions: 0.11+ (latest 2 versions).
 - Supported Russian keyboard layouts: ЙЦУКЕН.
 - Support all NORMAL mode keys except (keys are shown in English layout):
       ----------------------------------------------------------------------------
@@ -184,7 +184,7 @@ example for nvim-cmp <https://github.com/hrsh7th/nvim-cmp/issues/2072>.
 9. Links                                                        *ruscmd-links*
 
 1. *License MIT*: https://img.shields.io/badge/license-MIT-royalblue.svg
-2. *Neovim 0.9+*: https://img.shields.io/badge/Neovim-0.9%2B-royalblue?logo=neovim&logoColor=white
+2. *Neovim 0.11+*: https://img.shields.io/badge/Neovim-0.11%2B-royalblue?logo=neovim&logoColor=white
 3. *Lua 5.1*: https://img.shields.io/badge/Lua-5.1-blue
 4. *Test*: https://img.shields.io/github/actions/workflow/status/powerman/ruscmd.nvim/test.yml?label=test
 5. *Release*: https://img.shields.io/github/v/release/powerman/ruscmd.nvim?color=blue

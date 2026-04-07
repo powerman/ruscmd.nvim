@@ -3,8 +3,7 @@ lockfile = true # DO NOT FORGET TO `touch mise.lock` if mise.lock does not exist
 
 
 [tools]
-# Use aqua to work around https://github.com/mise-plugins/vfox-neovim/issues/2.
-'aqua:neovim/neovim' = ['latest', 'sub-0.1:latest', '0.9']
+'aqua:neovim/neovim' = ['latest', 'sub-0.1:latest']
 lua = '5.1'
 
 #--- Generate
@@ -88,7 +87,7 @@ test -d $DIR || git clone https://github.com/kdheepak/panvimdoc $DIR
 git -C $DIR checkout $VER 2>/dev/null || (git -C $DIR fetch && git -C $DIR checkout $VER)
 GITHUB_ACTIONS= $DIR/panvimdoc.sh \
     --project-name "$(basename "$PWD" .nvim)" \
-    --description 'NORMAL and CMDLINE modes support in Russian keyboard layout' \
+    --description "$(grep -E -v '^#|^$|^\[?!' README.md | head -n 1)" \
     --input-file README.md \
     --shift-heading-level-by -1
 '''
@@ -118,11 +117,6 @@ run = 'nvim -l tests/run.lua --minitest'
 description = 'Run tests for a whole project with previous Neovim version'
 tools.'aqua:neovim/neovim' = 'sub-0.1:latest'
 run = 'nvim -l tests/run.lua --minitest'
-
-[tasks.'test:0_9']
-description = 'Run tests for a whole project with Neovim 0.9'
-tools.'aqua:neovim/neovim' = '0.9'
-run = 'nvim -u tests/shim_nvim-0.9.lua -l tests/run.lua --minitest'
 
 [tasks.cachedir]
 hide = true
