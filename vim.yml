@@ -1,5 +1,11 @@
+base: lua51
+
 globals:
   vim:
+    any: true
+
+  # Provided by 'lunarmodules/luassert', loaded as a global by lazy.minit.
+  assert:
     any: true
 
   # Exported by mini.test with option `emulate_busted = true`.
