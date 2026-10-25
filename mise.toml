@@ -1,8 +1,11 @@
 [settings]
-lockfile = true # DO NOT FORGET TO `touch mise.lock` if mise.lock does not exist!
+lockfile = true              # DO NOT FORGET TO `touch mise.lock` if mise.lock does not exist!
+npm.package_manager = 'pnpm' # Avoid .mise/locks/** sidecars required by default aube.
 
 
 [tools]
+node = 'lts'
+pnpm = 'latest'
 'aqua:neovim/neovim' = ['latest', 'sub-0.1:latest']
 lua = '5.1'
 
@@ -49,6 +52,7 @@ nvim -l tests/run.lua --lazy-restore
 
 [tasks.'deps:tests:update']
 description = 'Update lazy.nvim dependencies for tests'
+depends = ['cachedir']
 run = 'nvim -l tests/run.lua --lazy-update'
 
 [tasks.generate]
@@ -111,12 +115,22 @@ run = 'selene .'
 [tasks.'test:latest']
 description = 'Run tests for a whole project with latest Neovim version'
 tools.'aqua:neovim/neovim' = 'latest'
+depends = ['deps:tests:install']
 run = 'nvim -l tests/run.lua --minitest'
 
 [tasks.'test:previous']
 description = 'Run tests for a whole project with previous Neovim version'
 tools.'aqua:neovim/neovim' = 'sub-0.1:latest'
+depends = ['deps:tests:install']
 run = 'nvim -l tests/run.lua --minitest'
+
+# Parallel test tasks must not install dependencies concurrently:
+# one of them may fail on partially installed lazy.nvim,
+# and then Neovim in another one hangs on SIGTERM sent by mise.
+[tasks.'deps:tests:install']
+hide = true
+depends = ['cachedir']
+run = 'nvim -l tests/run.lua'
 
 [tasks.cachedir]
 hide = true
