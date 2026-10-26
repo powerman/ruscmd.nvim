@@ -1,6 +1,6 @@
 {
-  "hererocks": { "branch": "master", "commit": "c9c5444dea1e07e005484014a8231aa667be30b6" },
-  "lazy.nvim": { "branch": "main", "commit": "7967abe55752aa90532e6bb4bd4663fe27a264cb" },
+  "hererocks": { "branch": "master", "commit": "5d77b0bafc8b96f82355ca2ce5637c00d78a065c" },
+  "lazy.nvim": { "branch": "main", "commit": "85c7ff3711b730b4030d03144f6db6375044ae82" },
   "luassert": { "branch": "master", "commit": "8d8dc8a54cc468048a128a867f6449a6c3fdd11a" },
-  "mini.test": { "branch": "main", "commit": "011e14293baa8ebdfde83b756b435403281153fb" }
+  "mini.test": { "branch": "main", "commit": "35c67cb7f2dc697ed0c7c06400fcf29a8a521d7d" }
 }
