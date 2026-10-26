@@ -18,6 +18,10 @@ vim.env.XDG_STATE_HOME = vim.uv.cwd() .. '/.cache/tests/state'
 local config = {
     defaults = { version = '*' },
     rocks = { hererocks = true },
+    -- Parallel test tasks for different Neovim versions share XDG_CACHE_HOME,
+    -- and vim.loader writes its bytecode cache non-atomically,
+    -- so another process may read a truncated module and get `true` from require().
+    performance = { cache = { enabled = false } },
     spec = {
         { 'luarocks/hererocks', version = false },
         'lunarmodules/luassert',
